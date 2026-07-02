@@ -143,9 +143,9 @@ tr:hover td{background:rgba(0,99,230,.03);}
           <select id="f-cabang">
             <option value="">— pilih —</option>
             <option>Jember - Unej</option>
-            <option>Jember - Mangli</option>
             <option>Jember - Alun-alun</option>
-            <option>Jember - Packaging</option>
+            <option>Jember - Mangli</option>
+            <option>Packaging</option>
             <option>Bondowoso</option>
             <option>Banyuwangi</option>
           </select>
@@ -221,9 +221,9 @@ tr:hover td{background:rgba(0,99,230,.03);}
       <select id="filter-cabang" onchange="renderTable()">
         <option value="">Semua cabang</option>
         <option>Jember - Unej</option>
-        <option>Jember - Mangli</option>
         <option>Jember - Alun-alun</option>
-        <option>Jember - Packaging</option>
+        <option>Jember - Mangli</option>
+        <option>Packaging</option>
         <option>Bondowoso</option>
         <option>Banyuwangi</option>
       </select>
@@ -252,7 +252,6 @@ tr:hover td{background:rgba(0,99,230,.03);}
 var USERS = {
   'rifa':      'rifa123',
   'venny':     'venny123',
-  'alifah':    'alifah123',
   'dea':       'dea123',
   'rima':      'rima123',
   'iday':      'iday123',
@@ -260,6 +259,7 @@ var USERS = {
   'bella':     'bella123',
   'nisa':      'nisa123',
   'fitri':     'fitri123',
+  'alifah':    'alifah123',
 };
 
 /* ===== GOOGLE SHEETS URL — ganti dengan URL Web App kamu ===== */
@@ -372,6 +372,7 @@ function getBadgeClass(cab){
   if(!cab) return 'badge-other';
   var c=cab.toLowerCase();
   if(c.indexOf('jember')>-1) return 'badge-jember';
+  if(c.indexOf('packaging')>-1) return 'badge-bondowoso';
   if(c.indexOf('bondowoso')>-1) return 'badge-bondowoso';
   if(c.indexOf('banyuwangi')>-1) return 'badge-banyuwangi';
   return 'badge-other';
