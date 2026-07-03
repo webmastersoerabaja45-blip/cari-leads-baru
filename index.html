@@ -142,12 +142,11 @@ tr:hover td{background:rgba(0,99,230,.03);}
           <label>Cabang *</label>
           <select id="f-cabang">
             <option value="">— pilih —</option>
-            <option>Jember - Unej</option>
-            <option>Jember - Alun-alun</option>
-            <option>Jember - Mangli</option>
-            <option>Packaging</option>
-            <option>Bondowoso</option>
-            <option>Banyuwangi</option>
+            <option>KMP</option>
+            <option>HW</option>
+            <option>BWS</option>
+            <option>LA</option>
+            <option>BWI</option>
           </select>
         </div>
         <div class="form-group">
@@ -166,23 +165,14 @@ tr:hover td{background:rgba(0,99,230,.03);}
           <label>Produk Diminati</label>
           <select id="f-produk">
             <option value="">— pilih —</option>
-            <option>Banner FL260</option>
-            <option>Banner FL280</option>
-            <option>Banner FL340</option>
-            <option>Banner Korea 440</option>
-            <option>Paket X-Banner</option>
-            <option>Paket Y-Banner</option>
-            <option>Paket Roll Banner</option>
-            <option>Stiker Bontaq</option>
-            <option>Stiker Vinil Susu</option>
-            <option>Stiker Vinil Transparan</option>
-            <option>Stiker Vinil Hologram</option>
-            <option>Packaging Box</option>
-            <option>Paperbag</option>
-            <option>Hangtag</option>
+            <option>BANNER FL280</option>
+            <option>ST BONTAQ/CHROMO</option>
+            <option>ST VINIL SUSU</option>
             <option>AP260</option>
-            <option>AP230</option>
-            <option>Lainnya</option>
+            <option>AP150</option>
+            <option>BANNER KOREA 440</option>
+            <option>KISS CUT</option>
+            <option>MUG</option>
           </select>
         </div>
         <div class="form-group">
@@ -220,12 +210,11 @@ tr:hover td{background:rgba(0,99,230,.03);}
       <input type="text" id="filter-search" placeholder="Cari nama / produk / WA..." oninput="renderTable()" style="min-width:200px;">
       <select id="filter-cabang" onchange="renderTable()">
         <option value="">Semua cabang</option>
-        <option>Jember - Unej</option>
-        <option>Jember - Alun-alun</option>
-        <option>Jember - Mangli</option>
-        <option>Packaging</option>
-        <option>Bondowoso</option>
-        <option>Banyuwangi</option>
+        <option>KMP</option>
+        <option>HW</option>
+        <option>BWS</option>
+        <option>LA</option>
+        <option>BWI</option>
       </select>
       <span class="count-badge" id="count-label">0 data</span>
       <!-- Download CSV hanya untuk admin — hapus komentar ini kalau mau aktifkan -->
@@ -263,7 +252,7 @@ var USERS = {
 };
 
 /* ===== GOOGLE SHEETS URL — ganti dengan URL Web App kamu ===== */
-var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzDr2Of6Yr1vzuyJcbOWtDRoC2f2FlQA09si7RrcJx3zXQy-JT5xLEsHZj5j6KklfMGqQ/exec';
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw08b3xQNCq4szLSoWM4y08MIz70BkirhvtRuNnCCNkODfHpg8lzCtJOOJWkbq4yMy2/exec';
 
 /* ===== STORAGE KEY ===== */
 var KEY = 'spk_leads_v1';
