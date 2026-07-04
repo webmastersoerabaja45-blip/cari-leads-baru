@@ -197,6 +197,32 @@ tr:hover td{background:rgba(0,99,230,.03);}
           <label>Admin / CS</label>
           <input type="text" id="f-cs" placeholder="Nama CS">
         </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="f-status">
+            <option value="">— pilih —</option>
+            <option>Order</option>
+            <option>Dalam Proses</option>
+            <option>Follow-up</option>
+            <option>Lost</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Alasan</label>
+          <select id="f-alasan">
+            <option value="">— pilih —</option>
+            <option>Harga terlalu mahal</option>
+            <option>Respon lambat</option>
+            <option>Spec tidak sesuai</option>
+            <option>Deadline tidak terkejar</option>
+            <option>Pindah ke kompetitor</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Catatan</label>
+          <input type="text" id="f-catatan" placeholder="Catatan tambahan">
+        </div>
       </div>
       <div class="form-actions">
         <button class="btn-primary" onclick="tambahLead()">+ Simpan Lead</button>
@@ -225,7 +251,7 @@ tr:hover td{background:rgba(0,99,230,.03);}
           <tr>
             <th>No</th><th>Cabang</th><th>Tgl Masuk</th><th>Nama Pelanggan</th>
             <th>No WA</th><th>Produk</th><th>Sumber</th><th>Estimasi (Rp)</th>
-            <th>CS</th><th></th>
+            <th>CS</th><th>Status</th><th>Catatan</th><th></th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -252,7 +278,7 @@ var USERS = {
 };
 
 /* ===== GOOGLE SHEETS URL — ganti dengan URL Web App kamu ===== */
-var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzylII1C6AUpanu-Uk51n2EXEiCHJVMhwnpPxMS81djexAOBt1TxAuIN85dm3p9ajX9/exec';
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycby4Tfs8LWm6MAPD2NyYx1Pm9PBHMBKkDo0FIE9k0ydpBmfCyASM4fWXiEjmfCaBtmMZYw/exec';
 
 /* ===== STORAGE KEY ===== */
 var KEY = 'spk_leads_v1';
@@ -311,6 +337,9 @@ function tambahLead(){
     sumber:document.getElementById('f-sumber').value,
     nilai:parseInt(document.getElementById('f-nilai').value)||0,
     cs:document.getElementById('f-cs').value,
+    status:document.getElementById('f-status').value,
+    alasan:document.getElementById('f-alasan').value,
+    catatan:document.getElementById('f-catatan').value,
   };
 
   /* Simpan lokal dulu supaya CS langsung lihat di tabel */
@@ -342,8 +371,8 @@ function tambahLead(){
 }
 
 function resetForm(){
-  ['f-cabang','f-produk','f-sumber'].forEach(function(id){ document.getElementById(id).value=''; });
-  ['f-nama','f-wa','f-nilai'].forEach(function(id){ document.getElementById(id).value=''; });
+  ['f-cabang','f-produk','f-sumber','f-status','f-alasan'].forEach(function(id){ document.getElementById(id).value=''; });
+  ['f-nama','f-wa','f-nilai','f-catatan'].forEach(function(id){ document.getElementById(id).value=''; });
   setToday();
 }
 
@@ -398,6 +427,8 @@ function renderTable(){
       +'<td style="color:var(--muted)">'+l.sumber+'</td>'
       +'<td style="color:var(--blue)">'+rp+'</td>'
       +'<td style="color:var(--muted)">'+l.cs+'</td>'
+      +'<td><span class="badge '+(l.status==='Order'?'badge-jember':l.status==='Lost'?'badge-bondowoso':'badge-other')+'">'+( l.status||'-')+'</span></td>'
+      +'<td style="color:var(--muted);max-width:140px;overflow:hidden;text-overflow:ellipsis">'+(l.catatan||'-')+'</td>'
       +'<td><button class="btn-del" onclick="hapusLead('+l.id+')" title="Hapus">✕</button></td>'
       +'</tr>';
   }).join('');
